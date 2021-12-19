@@ -4,12 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\ToDoList;
+use App\Models\User;
 
 class Dashboard extends Component
 {
     public $showForm = false;
     public $title;
     public $lists;
+    public $user;
 
     public $rules = [
         'title' => 'required',
@@ -17,7 +19,8 @@ class Dashboard extends Component
 
     public function mount()
     {
-        $this->lists = collect();
+        $this->createOrGetuser();
+        $this->lists = $this->user->lists;
     }
 
     public function render()
@@ -41,8 +44,20 @@ class Dashboard extends Component
         $this->validate();
         $list = new ToDoList();
         $list->title = $this->title;
+        $list->user_id = $this->user->id;
         $list->save();
-        $this->lists->push($list);
+        $this->lists = $this->user->lists->fresh();
         $this->cancel();
+    }
+
+    public function createOrGetuser()
+    {
+        $ip  = request()->ip();
+        if (!$user = User::where('ip_address', $ip)->first()) {
+            $user = new User();
+            $user->ip_address = $ip;
+            $user->save();
+        }
+        $this->user = $user;
     }
 }

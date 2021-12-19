@@ -11,4 +11,12 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+    * Get the todolists associated with the User
+    */
+    public function lists()
+    {
+        return $this->hasMany(ToDoList::class);
+    }
 }
