@@ -46,4 +46,14 @@ class UserToDoTask extends Component
         $this->emitUp('refreshComponent');
         $this->task = $this->task->fresh();
     }
+
+    public function moveUp()
+    {
+        $this->emitUp('moveTaskUp', $this->task);
+    }
+
+    public function moveDown()
+    {
+        $this->emitUp('moveTaskDown', $this->task);
+    }
 }

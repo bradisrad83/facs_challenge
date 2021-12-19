@@ -19,12 +19,16 @@ class UserToDoList extends Component
         'due_by'    => 'required'
     ];
 
-    protected $listeners = ['refreshComponent' => 'getTasks'];
+    protected $listeners = [
+        'refreshComponent'  => 'getTasks',
+        'moveTaskUp'        => 'moveUp',
+        'moveTaskDown'      => 'moveDown',
+    ];
 
     public function mount(ToDoList $list)
     {
         $this->list = $list;
-        $this->tasks = $this->list->tasks;
+        $this->tasks = $this->list->tasks->sortBy('order');
     }
 
     public function render()
@@ -60,6 +64,38 @@ class UserToDoList extends Component
 
     public function getTasks()
     {
-        $this->tasks = $this->list->tasks;
+        $this->tasks = $this->list->tasks->sortBy('order');
+    }
+
+    public function moveUp(ToDoTask $task)
+    {
+        if ($task->order == 1) {
+            return;
+        }
+        // $this->list->tasks->each(function ($data) use ($task) {
+        //     if ($data->id == $task->id) {
+        //         $data->order--;
+        //     } else {
+        //         $data->order++;
+        //     }
+        //     $data->save();
+        // });
+        // $this->tasks = $this->list->tasks;
+    }
+
+    public function moveDown(ToDoTask $task)
+    {
+        if ($task->order == $this->list->tasks->count()) {
+            return;
+        }
+        // $this->list->tasks->each(function ($data) use ($task) {
+        //     if ($data->id == $task->id) {
+        //         $data->order++;
+        //     } else {
+        //         $data->order--;
+        //     }
+        //     $data->save();
+        // });
+        // $this->tasks = $this->list->tasks;
     }
 }
