@@ -12,7 +12,7 @@
     </head>
 
     <body class="w-screen h-screen overflow-y-scroll container mx-auto bg-gray-200">
-        <div class="py-20 container mx-auto">
+        <div class="pt-20 pb-10 container mx-auto">
             <div class="text-center bg-white p-8 rounded-lg shadow-lg">
                 <h1 class="text-4xl font-bold">Welcome To the ToDo List Application!!!!!</h1>
                 <p class="w-2/3 mx-auto text-xl mt-4">Always forget what needs to get done?  Well do we have the solution for you.  Get started by clicking New List Buttong below.</p>
