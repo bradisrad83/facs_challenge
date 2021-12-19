@@ -2,9 +2,7 @@
     <div class="bg-white p-6 rounded-lg shadow-lg">
         <div class="flex justify-between">
             <h2 class="text-2xl font-bold">To Do Lists</h2>
-            @if($lists->isEmpty())
-                <button wire:click="newList()" class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded">New List</button>
-            @endif
+            <button wire:click="newList()" class="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded">New List</button>
         </div>
         @if($showForm)
             <div class="p-4 my-4">
