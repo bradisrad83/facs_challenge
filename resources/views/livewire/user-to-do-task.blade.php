@@ -1,5 +1,10 @@
-<div>
+<div class="py-2">
     <div class="flex justify-start items-center relative">
+        <div class="mr-3">
+            <div wire:click="moveUp()"><i class="fas fa-arrow-up"></i></div>
+            <div wire:click="moveDown()"><i class="fas fa-arrow-down"></i></div>
+        </div>
+        {{-- @endif --}}
         @if($task->isComplete() && !$task->deleted_at)
             <span wire:click="markActive({{$task}})" class="text-green-700 hover:text-green-800"><i class="fas fa-check mr-3"></i></span>
         @elseif(!$task->isComplete() && !$task->deleted_at)
