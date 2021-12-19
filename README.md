@@ -13,8 +13,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -   Fill in your local DB variables
 -   Create the DB in your local DB Tool
 -   In terminal: php artisan key:generate
--   In terminal: php artisan migrate --seed
 -   In terminal: npm install && npm run dev
 -   In terminal: php artisan serve
 -   Open up a web browser and go to 127.0.0.1:8000
--   Create a user and or use the login of a user from the Seeder
