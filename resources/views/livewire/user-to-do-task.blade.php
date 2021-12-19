@@ -10,10 +10,11 @@
         @else
             <span wire:click="deleteTask({{$task}})"class="text-gray-700 hover:text-gray-800"><i class="fas fa-trash-alt mr-3"></i></span>
         @endif
-        <p class="text-lg mr-3 {{$task->isComplete() ? 'line-through' : ''}}">{{$task->name}}</p>
-        <p class="text-lg mr-3 {{$task->isComplete() ? 'line-through' : ''}}">Due By: {{$task->due_by}}</p>
+        <p class="text-lg mr-3 {{$task->isComplete() ? 'line-through' : ''}} {{$task->deleted_at ? 'opacity-50' : ''}}">{{$task->order}}.</p>
+        <p class="text-lg mr-3 {{$task->isComplete() ? 'line-through' : ''}} {{$task->deleted_at ? 'opacity-50' : ''}}">{{$task->name}}</p>
+        <p class="text-lg mr-3 {{$task->isComplete() ? 'line-through' : ''}} {{$task->deleted_at ? 'opacity-50' : ''}}">Due By: {{$task->due_by}}</p>
         @if($task->deleted_at)
-            <p class="text-red-800 font-bold">Deleted At: {{$task->deleted_at}}</p>
+            <p class="text-red-800 font-bold opacity-50">Deleted At: {{$task->deleted_at}}</p>
         @endif
     </div>
 </div>

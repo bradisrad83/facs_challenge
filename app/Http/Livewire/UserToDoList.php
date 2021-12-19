@@ -50,6 +50,7 @@ class UserToDoList extends Component
         $task->name = $this->name;
         $task->to_do_list_id = $this->list->id;
         $task->due_by = $this->due_by;
+        $task->order = ($this->list->tasks->count() + 1);
         $task->save();
         $this->list = $this->list->refresh();
         $this->getTasks();
