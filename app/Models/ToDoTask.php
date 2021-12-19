@@ -75,4 +75,14 @@ class ToDoTask extends Model
         $this->save();
         return $this;
     }
+
+    /**
+     * restore a task from soft delete
+     */
+    public function revive()
+    {
+        $this->restore();
+        $this->save();
+        return $this;
+    }
 }

@@ -31,9 +31,18 @@ class UserToDoTask extends Component
         $this->task = $this->task->fresh();
     }
 
-    public function deleteItem(ToDoTask $task)
+    public function deleteTask(ToDoTask $task)
     {
         $task->remove();
+        $this->emitUp('refreshComponent');
+        $this->task = $this->task->fresh();
+        logger($this->task);
+    }
+
+    public function restoreTask($id)
+    {
+        $task = ToDoTask::withTrashed()->find($id);
+        $task->revive();
         $this->emitUp('refreshComponent');
         $this->task = $this->task->fresh();
     }

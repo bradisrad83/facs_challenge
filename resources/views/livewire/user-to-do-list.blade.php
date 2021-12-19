@@ -14,10 +14,10 @@
                 <div><span class="mb-2" wire:click="showForm()" class="text-sm"><i class="fas fa-plus mr-2"></i>Add Task</span></div>
                 @if($showForm)
                     <div class="my-2 flex items-center">
-                        <div class="w-full sm:w-1/3">
+                        <div class="w-full sm:w-1/4 sm:mr-2">
                             @include('partials._text-field-input', ['model' => 'name', 'label' => 'Task Name'])
                         </div>
-                        <div class="w-full sm:w-1/3">
+                        <div class="w-full sm:w-1/6">
                             @include('partials._text-field-input', ['model' => 'due_by', 'label' => 'Due Date/Time', 'type' => 'datetime-local'])
                         </div>
                     </div>
